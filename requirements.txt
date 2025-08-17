@@ -3,3 +3,5 @@ flask-mysqldb
 PyYAML
 scikit-learn
 pandas
+Flask-MySQLdb
+gunicorn
