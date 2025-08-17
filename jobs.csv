@@ -1,0 +1,6 @@
+title,description,skills
+Software Engineer,"Designs, develops, and maintains high-quality software solutions. Works with a team of developers to deliver robust and scalable applications.",Python;Java;SQL;Git;Agile
+Data Scientist,"Analyzes large datasets to extract meaningful insights. Builds machine learning models to solve business problems. Requires strong statistical knowledge.",Python;R;Machine Learning;Statistics;Pandas
+Frontend Developer,"Builds responsive and interactive user interfaces for web applications using modern JavaScript frameworks. Focuses on user experience.",HTML;CSS;JavaScript;React;Vue
+DevOps Engineer,"Manages the software development lifecycle, including continuous integration, deployment, and infrastructure automation. Works with cloud platforms.",AWS;Docker;Kubernetes;CI/CD;Terraform
+Project Manager,"Leads project planning, execution, and delivery. Manages timelines, resources, and stakeholder communication to ensure project success.",Project Management;Agile;Scrum;JIRA;Communication

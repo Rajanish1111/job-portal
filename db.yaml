@@ -1,0 +1,4 @@
+MYSQL_HOST: 'localhost'
+MYSQL_USER: 'root'
+MYSQL_PASSWORD: '091011' # Your numeric password in quotes
+MYSQL_DB: 'job_portal_db'
