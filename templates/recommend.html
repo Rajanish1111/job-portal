@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block title %}Job Recommendations{% endblock %}
+{% block content %}
+<div class="animate-on-scroll">
+    <h2>Job Recommendations</h2>
+    <p>We've found these jobs based on your profile skills. You can also search for other skills.</p>
+
+    <form id="recommendForm">
+        <div class="form-group">
+            <input type="text" id="skillsInput" name="skills" placeholder="e.g., Python, JavaScript, SQL" required value="{{ user_skills }}">
+            <button type="submit" class="button">Get Recommendations</button>
+        </div>
+    </form>
+    <hr>
+    <div id="job-container" class="job-container">
+        {% if jobs %}
+            {% for job in jobs %}
+            <div class="job-card animate-on-scroll">
+                <h3>{{ job.title }}</h3>
+                <p>{{ job.description[:150] }}...</p> {# Show a snippet #}
+                <a href="{{ url_for('apply', job_id=job.id) }}" class="button">Apply Now</a>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="placeholder-text">No matching jobs found for your skills. Try updating your profile or searching for different skills!</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

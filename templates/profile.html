@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('dashboard') }}" class="logo">JobPortal</a>
+        <nav>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('recommend_page') }}">Recommend Jobs</a>
+            <a href="{{ url_for('track') }}">Track Applications</a>
+            <a href="{{ url_for('profile') }}" class="active">Profile</a>
+        </nav>
+    </header>
+
+    <main class="profile-main animate-on-scroll">
+        <div class="form-container">
+            <h2>Update Your Profile</h2>
+            <p>Keep your skills up-to-date to get the best job recommendations.</p>
+
+            {% if message %}
+                <p class="success-message">{{ message }}</p>
+            {% endif %}
+
+            <form method="post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" value="{{ name }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="{{ email }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="skills">Your Skills (comma-separated):</label>
+                    <input type="text" id="skills" name="skills" value="{{ skills }}" placeholder="e.g., Python, JavaScript, SQL">
+                </div>
+                <button type="submit" class="button">Update Profile</button>
+            </form>
+        </div>
+    </main>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

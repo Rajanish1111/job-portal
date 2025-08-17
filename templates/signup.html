@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+<div class="form-container animate-on-scroll">
+    <h2>Create a New Account</h2>
+    <form method="post">
+        <div class="form-group">
+            <label for="name">Full Name or Company Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="role">I am a:</label>
+            <select id="role" name="role" required>
+                <option value="student">Student / Job Seeker</option>
+                <option value="company">Company / Recruiter</option>
+            </select>
+        </div>
+        <button type="submit" class="button">Sign Up</button>
+    </form>
+    <p class="form-switch">Already have an account? <a href="{{ url_for('login') }}">Login here</a>.</p>
+</div>
+{% endblock %}

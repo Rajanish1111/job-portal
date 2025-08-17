@@ -1,0 +1,51 @@
+<!-- templates/layout.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}JobPortal{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('home') }}" class="logo">JobPortal</a>
+        <nav>
+            <!-- This logic shows different links based on the session -->
+            {% if session.loggedin %}
+                {% if session.role == 'student' %}
+                    <a href="{{ url_for('dashboard') }}" class="{{ 'active' if 'dashboard' in request.path }}">Dashboard</a>
+                    <a href="{{ url_for('recommend_page') }}" class="{{ 'active' if 'recommend' in request.path }}">Recommend</a>
+                    <a href="{{ url_for('track') }}" class="{{ 'active' if 'track' in request.path }}">Track</a>
+                    <a href="{{ url_for('profile') }}" class="{{ 'active' if 'profile' in request.path }}">Profile</a>
+                {% elif session.role == 'company' %}
+                    <a href="{{ url_for('company_dashboard') }}" class="{{ 'active' if 'dashboard' in request.path }}">Dashboard</a>
+                    <a href="{{ url_for('add_job') }}" class="{{ 'active' if 'add_job' in request.path }}">Post Job</a>
+                {% endif %}
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <!-- If not logged in, only show Login and Sign Up -->
+                <a href="{{ url_for('login') }}" class="{{ 'active' if 'login' in request.path }}">Login</a>
+                <a href="{{ url_for('signup') }}" class="{{ 'active' if 'signup' in request.path }}">Sign Up</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main>
+        <!-- This section displays flash messages (like "Login successful!") -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <!-- This is where the content of each individual page will go -->
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

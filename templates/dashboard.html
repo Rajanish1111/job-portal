@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="dashboard-main">
+    <h1 class="fade-in">Welcome back, {{ user_name }}!</h1>
+    <p class="fade-in" style="animation-delay: 0.2s;">Here's a summary of your job search activity.</p>
+
+    <div class="card-container">
+        <div class="dashboard-card animate-on-scroll">
+            <i class="fas fa-rocket card-icon"></i>
+            <h3>Quick Actions</h3>
+            <p>Jump right back into your job search.</p>
+            <a href="{{ url_for('recommend_page') }}" class="button">Find New Jobs</a>
+            <a href="{{ url_for('profile') }}" class="button-secondary">Update Your Profile</a>
+        </div>
+
+        <div class="dashboard-card animate-on-scroll">
+            <i class="fas fa-chart-line card-icon"></i>
+            <h3>Your Stats (Real-Time)</h3>
+            <div class="stat-item">
+                <span>Applications Sent</span>
+                <span class="stat-value">{{ stats.total }}</span>
+            </div>
+            <div class="stat-item">
+                <span>Interviews Scheduled</span>
+                <span class="stat-value">{{ stats.interviews }}</span>
+            </div>
+            <div class="stat-item">
+                <span>Offers Received</span>
+                <span class="stat-value">{{ stats.offers }}</span>
+            </div>
+        </div>
+        
+        <div class="dashboard-card animate-on-scroll">
+            <i class="fab fa-ethereum card-icon"></i>
+            <h3>Verified Tracking</h3>
+            <p>Your application history is securely recorded on the blockchain, providing a transparent and immutable record.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
