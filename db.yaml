@@ -1,4 +1,5 @@
-MYSQL_HOST: 'localhost'
-MYSQL_USER: 'root'
-MYSQL_PASSWORD: '091011' # Your numeric password in quotes
-MYSQL_DB: 'job_portal_db'
+DB_HOST:   mysql-1a1bc148-jobportalex.c.aivencloud.com
+DB_PORT:   22130
+DB_USER:   avnadmin
+DB_PASSWORD: AVNS_ulEqEa7T8B5Z-YfUXSM
+DB_NAME:   defaultdb
