@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Candidate Dashboard{% endblock %}
+
+{% block content %}
+<h1 class="page-title slide-up">Welcome, {{ session['username'] }} (Candidate)!</h1>
+
+<section class="applied-jobs-section">
+    <h2 class="slide-up">Your Applied Jobs</h2>
+    {% if applied_jobs %}
+    <div class="card-grid">
+        {% for job in applied_jobs %}
+        <div class="card job-card fade-in">
+            <h3>{{ job.title }}</h3>
+            <p class="job-description">{{ job.description | truncate(100) }}</p>
+            <div class="job-meta">
+                <span><strong>Location:</strong> {{ job.location }}</span>
+                <span><strong>Salary:</strong> {{ job.salary }}</span>
+                <span><strong>Experience:</strong> {{ job.experience }}</span>
+            </div>
+            <p class="job-skills"><strong>Skills:</strong> {{ job.skills }}</p>
+            <p class="applied-date">Applied on: {{ job.application_date.split(' ')[0] }}</p>
+            <!-- Maybe a link to view application details if implemented later -->
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>You haven't applied for any jobs yet. <a href="{{ url_for('job_listings') }}">Browse available jobs</a> to find your next opportunity!</p>
+    {% endif %}
+</section>
+{% endblock %}

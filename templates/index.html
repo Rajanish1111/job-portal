@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome to JobConnect{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="hero-content fade-in">
+        <h1>Find Your Dream Job, or Your Dream Candidate</h1>
+        <p>Connecting talented individuals with leading companies in ECE & CSE fields.</p>
+        <div class="hero-buttons">
+            <a href="{{ url_for('job_listings') }}" class="btn">Browse Jobs</a>
+            {% if 'user_id' not in session %}
+                <a href="{{ url_for('signup') }}" class="btn btn-secondary">Join Us</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="hero-image">
+        <!-- Placeholder for a compelling image related to job search/careers -->
+        <!-- You can replace this with an actual image or leave it as a visual cue -->
+        <img src="{{ url_for('static', filename='img/hero-illustration.png') }}" alt="Job Search Illustration">
+    </div>
+</section>
+
+<section class="info-section">
+    <h2 class="slide-up">Why Choose JobConnect?</h2>
+    <div class="info-cards card-grid">
+        <div class="card fade-in delay-1">
+            <h3>Diverse Opportunities</h3>
+            <p>Explore a wide range of jobs in cutting-edge ECE and CSE domains, from startups to established enterprises.</p>
+        </div>
+        <div class="card fade-in delay-2">
+            <h3>Easy Application</h3>
+            <p>Apply to your desired roles with a few clicks. Streamlined process for candidates.</p>
+        </div>
+        <div class="card fade-in delay-3">
+            <h3>Find Top Talent</h3>
+            <p>Recruiters can easily post jobs and manage applications, connecting with qualified professionals.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

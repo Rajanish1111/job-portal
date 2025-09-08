@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Applications for {{ job.title }}{% endblock %}
+
+{% block content %}
+<h1 class="page-title slide-up">Applications for: {{ job.title }}</h1>
+<div class="job-details-overview card fade-in">
+    <h3>Job Details</h3>
+    <p><strong>Description:</strong> {{ job.description }}</p>
+    <p><strong>Skills:</strong> {{ job.skills }}</p>
+    <p><strong>Location:</strong> {{ job.location }}</p>
+    <p><strong>Salary:</strong> {{ job.salary }}</p>
+    <p><strong>Experience:</strong> {{ job.experience }}</p>
+</div>
+
+<section class="applications-list">
+    <h2 class="slide-up">Total Applications: {{ applications|length }}</h2>
+    {% if applications %}
+    <div class="card-grid">
+        {% for app in applications %}
+        <div class="card application-card fade-in">
+            <h3>{{ app.candidate_name }}</h3>
+            <p><strong>Email:</strong> <a href="mailto:{{ app.candidate_email }}">{{ app.candidate_email }}</a></p>
+            <p><strong>Application Message/CV:</strong></p>
+            <div class="cv-message-content">
+                <p>{{ app.cv_message if app.cv_message else 'No message provided.' }}</p>
+            </div>
+            <p class="applied-date">Applied on: {{ app.created_at.split(' ')[0] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No applications received for this job yet.</p>
+    {% endif %}
+</section>
+{% endblock %}
